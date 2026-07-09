@@ -141,3 +141,23 @@ document.querySelectorAll('.nav-drop-btn').forEach((btn) => {
     if (!wasOpen) drop.classList.add('open');
   });
 });
+
+// Click any image to preview it enlarged (zoom in / out) — applies to all content images
+(function () {
+  const box = document.createElement('div');
+  box.className = 'lb-modal';
+  box.setAttribute('aria-hidden', 'true');
+  box.innerHTML = '<button class="lb-close" aria-label="Close preview">&times;</button><div class="lb-inner"></div>';
+  document.body.appendChild(box);
+  const inner = box.querySelector('.lb-inner');
+  const close = () => { box.classList.remove('open'); box.setAttribute('aria-hidden', 'true'); inner.innerHTML = ''; document.body.style.overflow = ''; };
+  const openImg = (src, alt) => { inner.innerHTML = ''; const im = document.createElement('img'); im.src = src; im.alt = alt || ''; inner.appendChild(im); box.classList.add('open'); box.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  box.querySelector('.lb-close').addEventListener('click', close);
+  box.addEventListener('click', (e) => { if (e.target === box) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+  document.querySelectorAll('img').forEach((im) => {
+    if (im.closest('#nav, .apps-row, .app-tile, .brand')) return;
+    im.classList.add('zoomable');
+    im.addEventListener('click', () => openImg(im.currentSrc || im.src, im.alt));
+  });
+})();

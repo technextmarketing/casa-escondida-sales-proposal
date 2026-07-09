@@ -171,14 +171,9 @@ if (videoModal) {
   box.addEventListener('click', (e) => { if (e.target === box) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
 
-  const imgSel = [
-    '.xc-img', '.od-media img', '.pos-showcase img', '.tb-showcase img',
-    '.rfq-collage img', '.stack-shots img', '.duo-arrow img', '.annot-img',
-    '.paperless img', '.pick-card img', '.od-card img', '.hero-side .side',
-    '.intro-frame img', '.xc-overlap img'
-  ].join(', ');
-  document.querySelectorAll(imgSel).forEach((im) => {
-    if (im.classList.contains('no-fx')) return;
+  // Every content image is click-to-preview — skip only nav logos and icon grids
+  document.querySelectorAll('img').forEach((im) => {
+    if (im.closest('#nav, .apps-row, .app-tile, .brand')) return;
     im.classList.add('zoomable');
     im.addEventListener('click', () => openImg(im.currentSrc || im.src, im.alt));
   });
