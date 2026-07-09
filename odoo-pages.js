@@ -188,3 +188,15 @@ if (videoModal) {
     v.addEventListener('click', () => openVid(v.getAttribute('src')));
   });
 })();
+
+// Dropdown nav — hover on desktop (CSS), click-to-expand on mobile
+document.querySelectorAll('.nav-drop-btn').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    if (window.innerWidth > 960) return; // desktop uses CSS hover
+    e.preventDefault();
+    const drop = btn.closest('.nav-drop');
+    const wasOpen = drop.classList.contains('open');
+    document.querySelectorAll('.nav-drop').forEach((d) => d.classList.remove('open'));
+    if (!wasOpen) drop.classList.add('open');
+  });
+});

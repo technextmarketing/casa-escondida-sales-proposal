@@ -626,3 +626,30 @@ html,body{overflow-x:hidden}
   .hero h1{white-space:normal;font-size:clamp(1.6rem,7vw,2.2rem)}
   .plus-sep{margin:40px 0 6px}
 }
+
+/* ============ Dropdown nav (from Casa odoo-replica.css) ============ */
+/* ============ Dropdown nav ============ */
+.nav-drop{position:relative}
+.nav-drop-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;color:var(--body);font-size:13.5px;font-weight:600;font-family:inherit;white-space:nowrap;transition:color .18s}
+.nav-drop-btn:hover,.nav-drop:hover .nav-drop-btn,.nav-drop.active .nav-drop-btn{color:var(--purple)}
+.nav-drop.active .nav-drop-btn{font-weight:800}
+.nav-drop-btn svg{width:10px;height:10px;transition:transform .2s}
+.nav-drop-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(8px);min-width:216px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 26px 54px -20px rgba(31,20,30,.32);padding:9px;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:90}
+.nav-drop-menu::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav-drop:hover .nav-drop-btn svg{transform:rotate(180deg)}
+.nav-drop-menu a{display:block;padding:9px 15px;border-radius:9px;font-size:13.5px;font-weight:600;color:var(--body);white-space:nowrap}
+.nav-drop-menu a:hover{background:var(--purple-light);color:var(--purple)}
+.nav-drop-menu a.active{color:var(--purple);background:var(--purple-light);font-weight:800}
+.nav-drop-head{display:block;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:5px 15px 4px}
+@media(max-width:960px){
+  .nav-toggle{display:flex}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;gap:1px;padding:10px 0 8px;overflow:visible}
+  .nav-links.open{display:flex}
+  .nav-links>a{padding:11px 4px;font-size:15px}
+  .nav-drop{width:100%}
+  .nav-drop-btn{width:100%;justify-content:space-between;padding:11px 4px;font-size:15px}
+  .nav-drop-menu{position:static;transform:none;opacity:1;visibility:visible;display:none;min-width:0;box-shadow:none;border:none;border-left:2px solid var(--line);border-radius:0;margin:0 0 6px 8px;padding:2px 0}
+  .nav-drop.open .nav-drop-menu{display:block;transform:none}
+  .nav-drop.open .nav-drop-btn svg{transform:rotate(180deg)}
+}
