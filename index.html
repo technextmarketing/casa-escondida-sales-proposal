@@ -42,14 +42,6 @@
   .hero-portrait img{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease!important;}
   .hero-portrait img:hover{transform:translateY(-6px) scale(1.008)!important;}
 
-  /* — MARQUEE ticker — */
-  .lv-marquee{overflow:hidden;background:linear-gradient(90deg,var(--purple-light),#fff,var(--purple-light));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;}
-  .lv-mq-track{display:flex;gap:0;width:max-content;animation:lvMq 34s linear infinite;}
-  .lv-marquee:hover .lv-mq-track{animation-play-state:paused;}
-  @keyframes lvMq{to{transform:translateX(-50%)}}
-  .lv-mq-item{display:inline-flex;align-items:center;gap:14px;padding:0 26px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);white-space:nowrap;}
-  .lv-mq-item i{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--co),var(--tl));display:inline-block;}
-
   /* — big gradient step numbers — */
   .step-tag{gap:14px;}
   .step-tag b{font-family:'Inter',sans-serif;font-weight:900;font-size:2.1rem;line-height:1;letter-spacing:-.03em;
@@ -146,21 +138,6 @@
     </div>
   </div>
 </header>
-
-<!-- ============ MARQUEE ============ -->
-<div class="lv-marquee" aria-hidden="true">
-  <div class="lv-mq-track" id="lvMq">
-    <span class="lv-mq-item">Reservations<i></i></span>
-    <span class="lv-mq-item">One Guest Folio<i></i></span>
-    <span class="lv-mq-item">POS → Room<i></i></span>
-    <span class="lv-mq-item">Multi-Currency<i></i></span>
-    <span class="lv-mq-item">Deposits &amp; Balances<i></i></span>
-    <span class="lv-mq-item">Split Bills<i></i></span>
-    <span class="lv-mq-item">Refunds<i></i></span>
-    <span class="lv-mq-item">One-Tap Check-out<i></i></span>
-    <span class="lv-mq-item">Books Post Automatically<i></i></span>
-  </div>
-</div>
 
 <!-- ============ INTRODUCTION ============ -->
 <section class="intro-section" id="intro">
@@ -373,8 +350,6 @@
 /* ===== LIVELY HOME interactions (scoped, additive) ===== */
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  /* seamless marquee */
-  var mq = document.getElementById('lvMq'); if(mq){ mq.innerHTML += mq.innerHTML; }
   /* count-up + rise reveal for new elements */
   function countUp(el){
     var t = parseFloat(el.getAttribute('data-count')); if(isNaN(t)) return;
